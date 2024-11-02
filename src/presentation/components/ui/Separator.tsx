@@ -1,28 +1,25 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
-import {colors} from '../../../config/theme';
+import {ThemeContext} from '../../context/ThemeContext';
 
 interface Props {
   style?: StyleProp<ViewStyle>;
 }
 
 export const Separator = ({style}: Props) => {
+  const {colors} = useContext(ThemeContext);
   return (
-    <View style={styles.container}>
-      <View style={[styles.line, style]} />
+    <View style={[{backgroundColor: colors.cardBackground}]}>
+      <View style={[styles.line, {backgroundColor: colors.text}, style]} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.cardBackground,
-  },
   line: {
     alignSelf: 'center',
-    width: '90%',
+    width: '80%',
     height: 1,
-    backgroundColor: colors.text,
     opacity: 0.1,
     marginVertical: 8,
   },

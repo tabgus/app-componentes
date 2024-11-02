@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text} from 'react-native';
-import {colors, globalStyles} from '../../../config/theme';
+import {colors} from '../../../config/theme';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 interface Props {
@@ -19,7 +19,11 @@ export const SubTitle = ({
     <Text
       style={[
         styles.texto,
-        {marginTop: safe ? top : 0, backgroundColor: backgroundColor},
+        {
+          marginTop: safe ? top : 0,
+          backgroundColor: backgroundColor,
+          color: colors.primary,
+        },
       ]}>
       {text}
     </Text>
@@ -28,7 +32,7 @@ export const SubTitle = ({
 
 const styles = StyleSheet.create({
   texto: {
-    ...globalStyles.subTitle,
+    //...globalStyles.subTitle,
     marginBottom: 10,
   },
 });

@@ -1,16 +1,12 @@
-import {
-  Animated,
-  Easing,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import {colors} from '../../../config/theme';
+import {Animated, Easing, StyleSheet} from 'react-native';
 import {useAnimation} from '../../hooks/useAnimation';
-import React from 'react';
+import React, {useContext} from 'react';
+import {ThemeContext} from '../../context/ThemeContext';
+import {CustomView} from '../../components/ui/CustomView';
+import {Button} from '../../components/ui/Button';
 
 export const Animation101Screen = () => {
+  const {colors} = useContext(ThemeContext);
   const {
     fadeIn,
     fadeOut,
@@ -19,15 +15,20 @@ export const Animation101Screen = () => {
     startMovingTopPosition,
   } = useAnimation();
   return (
-    <View style={styles.container}>
+    <CustomView style={styles.container}>
       <Animated.View
         style={[
           styles.purpleBox,
-          {opacity: animatedOpacity, transform: [{translateY: animatedTop}]},
+          {
+            backgroundColor: colors.primary,
+            opacity: animatedOpacity,
+            transform: [{translateY: animatedTop}],
+          },
         ]}
       />
 
-      <Pressable
+      <Button
+        text="FadeIn"
         onPress={() => {
           fadeIn({});
           startMovingTopPosition({
@@ -36,14 +37,15 @@ export const Animation101Screen = () => {
             duration: 750,
           });
         }}
-        style={{marginTop: 10}}>
-        <Text>FadeIn</Text>
-      </Pressable>
+        styles={{marginTop: 10}}
+      />
 
-      <Pressable onPress={() => fadeOut({})} style={{marginTop: 10}}>
-        <Text>FadeOut</Text>
-      </Pressable>
-    </View>
+      <Button
+        text="FadeOut"
+        onPress={() => fadeOut({})}
+        styles={{marginTop: 10}}
+      />
+    </CustomView>
   );
 };
 
@@ -54,7 +56,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   purpleBox: {
-    backgroundColor: colors.primary,
     width: 150,
     height: 150,
     borderRadius: 80,

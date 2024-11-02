@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -11,8 +11,10 @@ import {Title} from '../../components/Title';
 import {CustomView} from '../../components/ui/CustomView';
 import {Card} from '../../components/ui/Card';
 import {globalStyles} from '../../../config/theme';
+import {ThemeContext} from '../../context/ThemeContext';
 
 export const TextInputScreen = () => {
+  const {colors} = useContext(ThemeContext);
   const [form, setForm] = useState({name: '', email: '', phone: ''});
   return (
     <KeyboardAvoidingView
@@ -22,14 +24,20 @@ export const TextInputScreen = () => {
           <Title text="Text Input" safe />
           <Card>
             <TextInput
-              style={globalStyles.input}
+              style={[
+                globalStyles.input,
+                {backgroundColor: colors.background, color: colors.text},
+              ]}
               placeholder="Nombre"
               autoCapitalize={'words'}
               autoCorrect={false}
               onChangeText={value => setForm({...form, name: value})}
             />
             <TextInput
-              style={globalStyles.input}
+              style={[
+                globalStyles.input,
+                {backgroundColor: colors.background, color: colors.text},
+              ]}
               placeholder="Email"
               autoCapitalize={'none'}
               autoCorrect={false}
@@ -37,7 +45,10 @@ export const TextInputScreen = () => {
               onChangeText={value => setForm({...form, email: value})}
             />
             <TextInput
-              style={globalStyles.input}
+              style={[
+                globalStyles.input,
+                {backgroundColor: colors.background, color: colors.text},
+              ]}
               placeholder="Email"
               keyboardType="phone-pad"
               onChangeText={value => setForm({...form, phone: value})}
@@ -45,22 +56,47 @@ export const TextInputScreen = () => {
           </Card>
           <View style={{height: 10}} />
           <Card>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
-            <Text>{JSON.stringify(form, null, 2)}</Text>
+            <Text style={{color: colors.text}}>
+              {JSON.stringify(form, null, 2)}
+            </Text>
+            <Text style={{color: colors.text}}>
+              {JSON.stringify(form, null, 2)}
+            </Text>
+            <Text style={{color: colors.text}}>
+              {JSON.stringify(form, null, 2)}
+            </Text>
+            <Text style={{color: colors.text}}>
+              {JSON.stringify(form, null, 2)}
+            </Text>
+            <Text style={{color: colors.text}}>
+              {JSON.stringify(form, null, 2)}
+            </Text>
+            <Text style={{color: colors.text}}>
+              {JSON.stringify(form, null, 2)}
+            </Text>
+            <Text style={{color: colors.text}}>
+              {JSON.stringify(form, null, 2)}
+            </Text>
+            <Text style={{color: colors.text}}>
+              {JSON.stringify(form, null, 2)}
+            </Text>
+            <Text style={{color: colors.text}}>
+              {JSON.stringify(form, null, 2)}
+            </Text>
+            <Text style={{color: colors.text}}>
+              {JSON.stringify(form, null, 2)}
+            </Text>
+            <Text style={{color: colors.text}}>
+              {JSON.stringify(form, null, 2)}
+            </Text>
           </Card>
           <View style={{height: 50}} />
           <Card>
             <TextInput
-              style={globalStyles.input}
+              style={[
+                globalStyles.input,
+                {backgroundColor: colors.background, color: colors.text},
+              ]}
               placeholder="Email"
               keyboardType="phone-pad"
               onChangeText={value => setForm({...form, phone: value})}

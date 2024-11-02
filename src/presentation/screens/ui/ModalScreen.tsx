@@ -1,18 +1,21 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Modal, Platform, StyleSheet, View} from 'react-native';
 import {CustomView} from '../../components/ui/CustomView';
 import {Title} from '../../components/Title';
 import {Button} from '../../components/ui/Button';
+import {ThemeContext} from '../../context/ThemeContext';
 
 export const ModalScreen = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const {colors} = useContext(ThemeContext);
   return (
     <CustomView margin>
       <Title text="Modal" safe />
       <Button text="Abrir modal" onPress={() => setIsVisible(true)} />
       <Modal visible={isVisible} animationType="slide">
         <View style={Styles.stiloModal}>
-          <View style={Styles.stiloModal2}>
+          <View
+            style={[Styles.stiloModal2, {backgroundColor: colors.background}]}>
             <Title text="Modal Content" safe />
             <Button
               text="Cerrar Modal"
@@ -34,10 +37,11 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 22,
     backgroundColor: 'rgba(0,0,0,0.3)',
+    //backgroundColor: 'red',
   },
   stiloModal2: {
     margin: 20,
-    backgroundColor: 'white',
+    //backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
     alignItems: 'center',

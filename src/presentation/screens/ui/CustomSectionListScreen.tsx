@@ -101,7 +101,7 @@ export const CustomSectionListScreen = () => {
           sections={houses}
           keyExtractor={item => item}
           renderItem={({item}) => (
-            <Text style={{marginVertical: 2}}>{item}</Text>
+            <Text style={{marginVertical: 2, color: colors.text}}>{item}</Text>
           )}
           renderSectionHeader={({section}) => (
             <SubTitle
